@@ -17,7 +17,7 @@ namespace C4{
 		Vec2s				size() const;
 		Player const&		operator()(int x, int y) const;
 		Player const&		operator()(Vec2s const&) const;
-		Move const&			getLastMove() const;
+		Move 				getLastMove() const;
 		bool				isOpen(int column) const;
 		void 				print();
 		bool 				apply(Move const& move);

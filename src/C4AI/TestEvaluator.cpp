@@ -53,7 +53,7 @@ int TestEvaluator::valueOfStreak(int streak){
 	} else if(streak == 2){
 		return 4;
 	} else if(streak == 3){
-		return 9;
+		return 12;
 	} else if(streak >= 4){
 		return 999;
 	}

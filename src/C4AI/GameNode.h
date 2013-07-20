@@ -20,6 +20,7 @@ namespace C4{
 		int					getValue() const;
 		void				addSubnode(GameNode* node);
 		void				removeSubnode(GameNode* node);
+		Move				getBestMove(const Player player) const;
 		NodeListIterator	getNodeListBegin();
 		NodeListIterator	getNodeListEnd();
 		

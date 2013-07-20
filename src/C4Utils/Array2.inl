@@ -62,6 +62,7 @@ Array2<T, TWidth, THeight>& Array2<T, TWidth, THeight>::operator=(Array2<T, TWid
 	for(int i = 0; i < TWidth * THeight; ++i){
 		m_data[i] = rhs.m_data[i];
 	}
+	return *this;
 }
 
 template<class T, int TWidth, int THeight>
@@ -69,6 +70,7 @@ Array2<T, TWidth, THeight>& Array2<T, TWidth, THeight>::operator=(Array2<T, TWid
 	delete [] m_data;
 	m_data = rhs.m_data;
 	rhs.m_data = nullptr;
+	return *this;
 }
 
 template<class T, int TWidth, int THeight>

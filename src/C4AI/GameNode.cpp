@@ -1,5 +1,8 @@
 #include "GameNode.h"
 
+#include <iostream>
+#include <cstdlib>
+
 using namespace C4;
 
 ////////////////////////////
@@ -12,8 +15,10 @@ GameNode::GameNode(Move const& move, int value)
 {}
 
 GameNode::~GameNode(){
-	delete m_subNodes.back();
-	m_subNodes.pop_back();
+	if(m_subNodes.size() > 0){
+		delete m_subNodes.back();
+		m_subNodes.pop_back();
+	}
 }
 
 ////////////////////
@@ -48,6 +53,35 @@ void GameNode::removeSubnode(GameNode* node){
 			m_subNodes.pop_back();
 		}
 	}
+}
+
+Move GameNode::getBestMove(const Player player) const{
+	if(m_subNodes.size() == 0){
+		return Move(player, -1);
+	}
+
+	std::vector<GameNode*> nodes;
+	int best_value = m_subNodes[0]->getValue();
+	for(auto node : m_subNodes){
+		if(player == Player::Red){
+			if (node->getValue() > best_value){
+				best_value = node->getValue();
+				nodes.clear();
+				nodes.push_back(node);
+			} else if(node->getValue() == best_value){
+				nodes.push_back(node);
+			}
+		} else {
+			if (node->getValue() < best_value){
+				best_value = node->getValue();
+				nodes.clear();
+				nodes.push_back(node);
+			} else if(node->getValue() == best_value){
+				nodes.push_back(node);
+			}
+		}
+	}
+	return (nodes[rand() % nodes.size()])->getMove();
 }
 
 GameNode::NodeListIterator GameNode::getNodeListBegin(){

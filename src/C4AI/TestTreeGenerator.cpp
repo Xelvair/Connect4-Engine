@@ -1,6 +1,7 @@
 #include "TestTreeGenerator.h"
 
 #include <Windows.h>
+#include <cstdlib>
 
 #include <C4Board/Player.h>
 
@@ -21,18 +22,16 @@ GameTree TestTreeGenerator::generate(Board board, int depth) const{
 
 void TestTreeGenerator::generateRecursiveTree(GameNode*& node, Board& board, int depth) const{	
 	//Evaluate node score
-	node->setValue(m_evaluator.evaluate(board));
+	int value = m_evaluator.evaluate(board);
 	
-	/*
-	std::cout << "Evaluated board: " << std::endl;
-	board.print();
-	std::cout << "score: " << node->getValue() << " depth: " << depth << std::endl;
-	Sleep(250);
-	*/
+	/*board.print();
+	std::cout << value << std::endl;
+	Sleep(250);*/
 	
-	//If we're at the specified depth, GTFO
-	if(depth <= 0)
+	if(depth <= 0 || std::abs(value) >= 900){
+		node->setValue(value);
 		return;
+	}
 	
 	//Calculate all possible moves
 	Player current_player = nextPlayer(node->getMove().getPlayer());
@@ -51,4 +50,15 @@ void TestTreeGenerator::generateRecursiveTree(GameNode*& node, Board& board, int
 		generateRecursiveTree(subnode, board, depth - 1);
 		board.revert();
 	}
+	
+	//Determine strongest value and cascade the result
+	int strongest_value = 0;
+	for(GameNode::NodeListIterator it = node->getNodeListBegin(); it != node->getNodeListEnd(); ++it){
+		if(current_player == Player::Red){
+			strongest_value = std::max(strongest_value, (*it)->getValue());
+		} else {
+			strongest_value = std::min(strongest_value, (*it)->getValue());
+		}
+	}
+	node->setValue(strongest_value);
 }

@@ -14,18 +14,29 @@ int main(int argc, char* argv[]){
 	srand(time(NULL));
 	
 	C4::Board b;
-	C4::TestEvaluator e;
 	C4::TestTreeGenerator g;
+	C4::GameTree t;
 	
-	C4::GameTree t = g.generate(b, 6);
-	
-	int num = 0;
-	bool isRedTurn = false;
-	do{
-		isRedTurn = !isRedTurn;
+	b.print();
+	while(true){
+		/*
+		int column = -1;
+		do{
+			std::cin >> column;
+		} while(!b.isOpen(column));
+		b.apply(C4::Move(C4::Player::Red, column));
 		b.print();
-		std::cout << "Evaluation: " << e.evaluate(b) << std::endl;
-		std::cin >> num;
-	} while (b.apply(C4::Move(isRedTurn ? C4::Player::Red : C4::Player::Blue, num)));
+		t = g.generate(b, 4);
+		b.apply(t.getRootNode()->getBestMove(C4::Player::Blue));
+		b.print();*/
+		
+		t = g.generate(b, 6);
+		b.apply(C4::Move(t.getRootNode()->getBestMove(C4::Player::Red)));
+		b.print();
+		t = g.generate(b, 6);
+		b.apply(C4::Move(t.getRootNode()->getBestMove(C4::Player::Blue)));
+		b.print();
+	}
+	
 	return 0;
 }

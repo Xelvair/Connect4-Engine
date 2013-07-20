@@ -11,7 +11,6 @@ namespace C4{
 	
 	static const Player STARTING_PLAYER = Player::Red;
 	
-	
 	/*Might want to put this in a .cpp file in the future*/
 	inline Player nextPlayer(const Player player){
 		return player == Player::Red ? Player::Blue : Player::Red;

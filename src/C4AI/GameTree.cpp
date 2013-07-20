@@ -6,10 +6,26 @@ using namespace C4;
 // CONSTRUCTORS/DESTRUCTORS //
 //////////////////////////////
 
+GameTree::GameTree()
+	: mp_root(nullptr)
+	, m_board(Board())
+{}
+
 GameTree::GameTree(GameNode* root, Board const& board)
 	: mp_root(root)
 	, m_board(board)
 {}
+
+GameTree::GameTree(GameTree const& rhs){
+	std::cout << "copying a game tree makes me sad :(" << std::endl;
+}
+
+GameTree::GameTree(GameTree&& rhs)
+	: mp_root(rhs.mp_root)
+	, m_board(rhs.m_board)
+{
+	rhs.mp_root = nullptr;
+}
 
 GameTree::~GameTree(){
 	delete mp_root;
@@ -34,4 +50,20 @@ const Board& GameTree::getBoard() const{
 
 void GameTree::setBoard(Board const& board){
 	m_board = board;
+}
+
+///////////////
+// OPERATORS //
+///////////////
+
+GameTree& GameTree::operator=(GameTree const& rhs){
+	std::cout << "copying a game tree makes me sad :(" << std::endl;
+	return *this;
+}
+
+GameTree& GameTree::operator=(GameTree&& rhs){
+	mp_root = rhs.mp_root;
+	m_board = rhs.m_board;
+	rhs.mp_root = nullptr;
+	return *this;
 }

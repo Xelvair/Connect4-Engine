@@ -20,8 +20,8 @@ Player const& Board::operator()(Vec2s const& pos) const{
 	return m_boardCache(pos);
 }
 
-Move const& Board::getLastMove() const{
-	m_moves.size() > 0 ? m_moves.back() : Move();
+Move Board::getLastMove() const{
+	return m_moves.size() > 0 ? m_moves.back() : Move();
 }
 
 bool Board::isOpen(int column) const{
