@@ -12,6 +12,8 @@ SET(${Target}_SRCLIST
 	ITreeGenerator.h
 	GameTree.h
 	GameTree.cpp
+	EvaluatorV2.h
+	EvaluatorV2.cpp
 )
 
 ADD_LIBRARY(${Target} ${${Target}_SRCLIST})

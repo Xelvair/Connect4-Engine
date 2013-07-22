@@ -15,7 +15,6 @@ int TestEvaluator::evaluate(Board const& board) const{
 		Vec2s pos = it.first; //initial position
 		int redStreak = 0;
 		int blueStreak = 0;
-		static int i;
 		while(pos.isInbetween(Vec2s(0, 0), Vec2s(Board::WIDTH - 1, Board::HEIGHT - 1))){
 			switch(board(pos)){
 				case Player::None:

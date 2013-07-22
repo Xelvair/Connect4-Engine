@@ -8,10 +8,11 @@ namespace C4{
 	template<int TWidth, int THeight>	
 	class CheckPath final{	
 	public:
-		static const CheckPathList list;
-	private:
-		CheckPath();
+		CheckPath() = delete;
+		CheckPath(CheckPath const&) = delete;
 	
+		static const CheckPathList list;
+	private:	
 		static const CheckPathList generate(){
 			CheckPathList 	cpl; //List of all positions + directions to be checked
 			Vec2s 			step;//Determines in which way we go

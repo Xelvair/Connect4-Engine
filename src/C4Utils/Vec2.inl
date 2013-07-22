@@ -1,5 +1,5 @@
 #include <iostream>
-#include <math.h>
+#include <cmath>
 
 ////////////////////
 // MEMBER METHODS //
@@ -43,6 +43,22 @@ bool C4::Vec2<T>::isInbetween(C4::Vec2<T> const& first, C4::Vec2<T> const& secon
 		   this->x <= std::max(first.x, second.x) &&
 		   this->y >= std::min(first.y, second.y) &&
 		   this->y <= std::max(first.y, second.y));
+}
+
+///////////////////////////
+// STATIC MEMBER METHODS //
+///////////////////////////
+
+template<class T>
+std::list<C4::Vec2<T> > C4::Vec2<T>::allInbetween(C4::Vec2<T> const& v1, C4::Vec2<T> const& v2){
+	static_assert(std::is_integral<T>::value, "Vec2<T>::allInbetween() must only be used with integral types");
+	std::list<C4::Vec2<T> > list;
+	for(int y = std::min(v1.y, v2.y); y <= std::max(v1.y, v2.y); ++y){
+		for(int x = std::min(v1.x, v1.x); x <= std::max(v1.x, v2.x); ++x){
+			list.push_back(C4::Vec2<T>(x, y));
+		}
+	}
+	return list;
 }
 
 //////////////////////

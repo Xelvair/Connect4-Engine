@@ -23,6 +23,7 @@ Move::~Move(){}
 Move& Move::operator=(Move const& rhs){
 	this->m_player = rhs.m_player;
 	this->m_column = rhs.m_column;
+	return *this;
 }
 
 const Player Move::getPlayer() const{

@@ -28,7 +28,7 @@ void TestTreeGenerator::generateRecursiveTree(GameNode*& node, Board& board, int
 	std::cout << value << std::endl;
 	Sleep(250);*/
 	
-	if(depth <= 0 || std::abs(value) >= 900){
+	if(depth <= 0 || std::abs(value) >= 9000){
 		node->setValue(value);
 		return;
 	}

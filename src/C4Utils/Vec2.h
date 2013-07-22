@@ -1,6 +1,7 @@
 #pragma once
 
 #include <ostream>
+#include <list>
 
 namespace C4{
 	template<class T>
@@ -22,6 +23,8 @@ namespace C4{
 		//Returns whether this vector is in between two others.
 		//Think of it as an intersection check between a point and a rectangle
 		bool	isInbetween(Vec2<T> const& first, Vec2<T> const& second) const;
+	
+		static std::list<Vec2<T> > allInbetween(Vec2<T> const& v1, Vec2<T> const& v2);
 	};
 	
 	typedef Vec2<int> Vec2i;

@@ -2,7 +2,7 @@
 
 #include "ITreeGenerator.h"
 #include "GameTree.h"
-#include "TestEvaluator.h"
+#include "EvaluatorV2.h"
 
 namespace C4{
 	class TestTreeGenerator final : public ITreeGenerator{
@@ -10,7 +10,7 @@ namespace C4{
 		virtual GameTree 	generate(Board board, int depth) const final override;
 	
 	private:
-		TestEvaluator	m_evaluator;
+		EvaluatorV2		m_evaluator;
 	
 		void			generateRecursiveTree(GameNode*& node, Board& board, int depth) const;
 	};

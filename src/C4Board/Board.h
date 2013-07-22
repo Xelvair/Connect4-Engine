@@ -12,6 +12,7 @@ namespace C4{
 	public:
 		static const int WIDTH = 7;
 		static const int HEIGHT = 6;
+		static const int WINSTREAK = 4;
 		typedef Array2<Player, WIDTH, HEIGHT> 	BoardArray;
 	
 		Vec2s				size() const;
