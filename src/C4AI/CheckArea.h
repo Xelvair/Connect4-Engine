@@ -21,20 +21,48 @@ namespace C4{
 			CheckAreaList list;
 			
 			//Vertical check area
-			list.push_front(std::make_pair(std::make_pair(Vec2i(0, 0), Vec2i(TWidth - Board::WINSTREAK, THeight - 1)),
-										  Vec2i(1, 0)));
+			list.push_front(
+				std::make_pair(
+					std::make_pair(
+						Vec2i(0, 0), 
+						Vec2i(TWidth - Board::WINSTREAK, THeight - 1)
+					),
+					Vec2i(1, 0)
+				)
+			);
 			
 			//Horizontal check area
-			list.push_front(std::make_pair(std::make_pair(Vec2i(0, 0), Vec2i(TWidth - 1, THeight - Board::WINSTREAK)),
-										  Vec2i(0, 1)));
+			list.push_front(
+				std::make_pair(
+					std::make_pair(
+						Vec2i(0, 0), 
+						Vec2i(TWidth - 1, THeight - Board::WINSTREAK)
+					),
+					Vec2i(0, 1)
+				)
+			);
 										  
 			//Diagonally descending check area
-			list.push_front(std::make_pair(std::make_pair(Vec2i(0, 0), Vec2i(TWidth - Board::WINSTREAK, THeight - Board::WINSTREAK)),
-										  Vec2i(1, 1)));
+			list.push_front(
+				std::make_pair(
+					std::make_pair(
+						Vec2i(0, 0), 
+						Vec2i(TWidth - Board::WINSTREAK, THeight - Board::WINSTREAK)
+					),
+					Vec2i(1, 1)
+				)
+			);
 										  
 			//Diagonally ascending check area
-			list.push_front(std::make_pair(std::make_pair(Vec2i(0, Board::WINSTREAK - 1), Vec2i(TWidth - Board::WINSTREAK, THeight - 1)),
-										  Vec2i(1, -1)));
+			list.push_front(
+				std::make_pair(
+					std::make_pair(
+						Vec2i(0, Board::WINSTREAK - 1), 
+						Vec2i(TWidth - Board::WINSTREAK, THeight - 1)
+					),
+					Vec2i(1, -1)
+				)
+			);
 										  
 			return list;
 		}

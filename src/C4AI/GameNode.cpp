@@ -15,10 +15,10 @@ GameNode::GameNode(Move const& move, int value)
 {}
 
 GameNode::~GameNode(){
-	if(m_subNodes.size() > 0){
-		delete m_subNodes.back();
-		m_subNodes.pop_back();
+	for(auto node : m_subNodes){
+		delete node;
 	}
+	m_subNodes.clear();
 }
 
 ////////////////////

@@ -21,15 +21,18 @@ GameTree::GameTree(GameTree const& rhs){
 }
 
 GameTree::GameTree(GameTree&& rhs)
-	: mp_root(rhs.mp_root)
-	, m_board(rhs.m_board)
+	: m_board(rhs.m_board)
 {
+	delete mp_root;
+	mp_root = rhs.mp_root;
 	rhs.mp_root = nullptr;
 }
 
 GameTree::~GameTree(){
-	delete mp_root;
-	mp_root = nullptr;
+	if(mp_root){
+		delete mp_root;
+		mp_root = nullptr;
+	}
 }
 
 ////////////////////
@@ -62,8 +65,9 @@ GameTree& GameTree::operator=(GameTree const& rhs){
 }
 
 GameTree& GameTree::operator=(GameTree&& rhs){
-	mp_root = rhs.mp_root;
 	m_board = rhs.m_board;
+	delete mp_root;
+	mp_root = rhs.mp_root;
 	rhs.mp_root = nullptr;
 	return *this;
 }

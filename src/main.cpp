@@ -22,10 +22,10 @@ int main(int argc, char* argv[]){
 	C4::EvaluatorV2 e;
 
 	C4::Player current_player = C4::Player::Red;
-	
+		
 	b.print();
 	while(true){
-		/*int column = -1;
+		int column = -1;
 		do{
 			std::cin >> column;
 		} while(!b.isOpen(column));
@@ -36,17 +36,17 @@ int main(int argc, char* argv[]){
 		b.apply(t.getRootNode()->getBestMove(C4::Player::Blue));
 		b.print();
 		std::cout << "Eval: " << e.evaluate(b) << std::endl;
-		*/
-		t = g.generate(b, 6);
+		
+		/*t = g.generate(b, 7);
 		b.apply(C4::Move(t.getRootNode()->getBestMove(C4::Player::Red)));
 		b.print();
 		std::cout << "Eval: " << e.evaluate(b) << std::endl;
-		Sleep(1000);
-		t = g.generate(b, 6);
+		//Sleep(1000);
+		t = g.generate(b, 7);
 		b.apply(C4::Move(t.getRootNode()->getBestMove(C4::Player::Blue)));
 		b.print();
 		std::cout << "Eval: " << e.evaluate(b) << std::endl;
-		Sleep(1000);
+		//Sleep(1000);*/
 	}
 	return 0;
 }
